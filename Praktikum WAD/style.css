@@ -1,0 +1,7 @@
+body {
+  height: 1000px;
+}
+
+.carousel-inner > .item {
+  height: 400px;
+}
