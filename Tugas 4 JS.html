@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mang ea?</title>
+  </head>
+  <body>
+    <h1>Apa sih yang JS bisa?</h1>
+    <p id="demo">Javascript bisa memvalidasi inputan user</p>
+    <input id="angka" type="number" />
+    <button type="button" onclick="myfunction">Submit</button>
+    <script>
+      function myfunction() {
+        var x, text;
+
+        x = document.getElementById("angka").value;
+
+        if (isNaN(x) || x < 1 || x > 10) {
+          text = "Input not valid";
+        } else {
+          text = "Aman aja";
+        }
+
+        document.getElementById("angka").innerHTML = text;
+      }
+    </script>
+  </body>
+</html>
