@@ -3,30 +3,12 @@
 
 <?php
 // Buatlah variable untuk connect ke database yang telah di import ke phpMyAdmin
-$hostname = "127.0.0.1";
+$hostname = "localhost";
 $username = "root";
 $password = "";
-$database = "modul3 owen";
+$database = "modul3_owen";
 
-
-
-function query($query)
-{
-
-    global $conn;
-
-    $result = mysqli_query($conn, $query);
-
-    $rows = [];
-
-    while ($row = mysqli_fetch_assoc($result)) {
-        $rows[] = $row;
-    }
-
-    return $rows;
-}
-
-$conn = new mysqli($hostname, $username, $password, $database);
+$conn = new mysqli($hostname, $username, $password, $database, 3306);
 
 // 
 
@@ -34,5 +16,7 @@ $conn = new mysqli($hostname, $username, $password, $database);
 
 if ($conn->connect_error) {
     die("koneksi gagal:" . $conn->connect_error);
+} else {
+    echo "Koneksi Berhasil ke database";
 }
 ?>

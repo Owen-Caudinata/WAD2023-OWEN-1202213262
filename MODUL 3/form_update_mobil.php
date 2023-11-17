@@ -11,11 +11,10 @@
     <?php
     include("navbar.php");
     include("connect.php");
-    $id = $_GET['id'];
     // Buatlah query untuk mengambil masing-masing data berdasarkan id dari database (gunakan fungsi GET dan mysqli_fetch_assoc() 
     // serta query SELECT dan WHERE)
 
-
+    $id = $_GET['id'];
 
 
     //
@@ -29,36 +28,18 @@
                         <form action="update.php?id=<?php echo $id ?>" method="POST" enctype="multipart/form-data">
                             <!-- Tampilkan masing-masing data berdasarkan id -->
                             <?php
-                            $barang = query("SELECT * FROM showroom_mobil");
+                            $barang = mysqli_query($conn, "SELECT * FROM showroom_mobil WHERE id='$id'");
+                            $item = mysqli_fetch_assoc($barang);
 
-                            function select_data_by_id($conn, $query)
-                            {
-                                global $conn;
-                                global $id;
-                                global $barang;
 
-                                foreach ($barang as $item) :
-                                    $query = "SELECT * FROM showroom_mobil WHERE id = $id"; ?>
-                                    <tr>
-                                        <td><?= $item['nama_mobil'] ?></td>
-                                        <td><?= $item['brand_mobil'] ?></td>
-                                        <td><?= $item['warna_mobil'] ?></td>
-                                        <td><?= $item['tipe_mobil'] ?></td>
-                                        <td><?= $item['harga_mobil'] ?></td>
-                                        <td>
-                                        </td>
-                                    </tr>
-
-                            <?php endforeach;
-                                return ($query);
-                            }
                             ?>
+
                             <div class="form-floating mb-3">
-                                <input type="string" class="form-control" name="nama_mobil" id="nama_mobil" value="Tampilkan data nama_mobil disini">
+                                <input type="string" class="form-control" name="nama_mobil" id="nama_mobil" value=<?= $item["nama_mobil"] ?>>
                                 <label for="nama_mobil">Nama Mobil</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="string" class="form-control" name="brand_mobil" id="brand_mobil" value="Tampilkan data brand_mobil disini">
+                                <input type="string" class="form-control" name="brand_mobil" id="brand_mobil" value=<?= $item["nama_mobil"] ?>>
                                 <label for="brand_mobil">Brand Mobil</label>
                             </div>
                             <div class="form-floating mb-3">
