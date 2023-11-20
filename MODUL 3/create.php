@@ -2,13 +2,12 @@
 
 <?php
 // (1) Jangan lupa sertakan koneksi database dari yang sudah kalian buat yaa
-include('connect.php');
+require 'connect.php';
 // 
 
 // (2) Buatlah perkondisian untuk memeriksa apakah permintaan saat ini menggunakan metode POST
 
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
-
+if (isset($_POST['create'])) {
 
     // (3) Jika sudah coba deh kalian ambil data dari form (CLUE : pakai POST)
 
@@ -29,16 +28,21 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     // (4) Kalau sudah, kita lanjut Query / Menambahkan data pada SQL (Disini ada perintah untuk SQL), Masukkan ke tabel showroom_mobil (include setiap nama column)
 
-    $sql = "INSERT INTO showroom_mobil (nama_mobil,brand_mobil,warna_mobil,tipe_mobil,harga_mobil)
+    $sql = "INSERT INTO showroom_mobil (nama_mobil, brand_mobil, warna_mobil, tipe_mobil, harga_mobil)
     VALUES ('$nama_mobil','$brand_mobil','$warna_mobil','$tipe_mobil','$harga_mobil')";
 
-    // (5) Buatkan kondisi jika eksekusi query berhasil
+    $result = mysqli_query($conn, $sql);
 
+    // (5) Buatkan kondisi jika eksekusi query berhasil
+    if ($result == true) {
+        echo "Eksekusi query berhasil";
+    } else {
+        echo "Eksekusi query gagal";
+    }
     // (6) Jika terdapat kesalahan, buatkan eksekusi query gagalnya 
 
     // (7) Tutup koneksi ke database setelah selesai menggunakan database
-    header("Location: list_mobil.php");
-    exit();
-    mysqli_close($conn);
+    // header("Location: list_mobil.php");
+    // exit();
 }
 ?>

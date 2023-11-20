@@ -12,7 +12,7 @@
     include("navbar.php");
     include("connect.php");
     $id = $_GET['id'];
-    $barang = query("SELECT * FROM showroom_mobil");
+    $barang = mysqli_query($conn, "SELECT * FROM showroom_mobil");
     // Buatlah query untuk mengambil masing-masing data berdasarkan id dari database (gunakan fungsi GET dan mysqli_fetch_assoc() 
     // serta query SELECT dan WHERE)
 
