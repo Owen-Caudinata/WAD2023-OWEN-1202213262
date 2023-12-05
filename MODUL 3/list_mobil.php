@@ -43,7 +43,7 @@
 
             // form_detail_mobil.php dimana halaman tersebut akan menunjukkan seluruh data dari satu mobil berdasarkanid
             // 2. Apabila tidak ada data dalam database, maka outputnya adalah pesan 'tidak ada data dalam tabel'
-=======
+
             <table class="table">
                 <thead>
                     <tr>
@@ -93,7 +93,7 @@
                             </details></a>
                     </td>
                 </tr>
-                >>>>>>> 47ae73f5f21a3b43501b9dcf4fbb770daaf68247
+
 
 
 
